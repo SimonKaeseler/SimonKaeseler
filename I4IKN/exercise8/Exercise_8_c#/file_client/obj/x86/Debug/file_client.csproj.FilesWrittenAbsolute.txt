@@ -5,3 +5,10 @@
 /root/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/file_client/obj/x86/Debug/file_client.exe.mdb
 /root/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/file_client/bin/Debug/LIB.dll
 /root/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/file_client/bin/Debug/LIB.dll.mdb
+/home/ikn/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/file_client/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/home/ikn/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/file_client/obj/x86/Debug/file_client.exe
+/home/ikn/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/file_client/obj/x86/Debug/file_client.exe.mdb
+/home/ikn/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/file_client/bin/Debug/LIB.dll
+/home/ikn/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/file_client/bin/Debug/LIB.dll.mdb
+/home/ikn/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/file_client/bin/Debug/file_client.exe.mdb
+/home/ikn/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/file_client/bin/Debug/file_client.exe

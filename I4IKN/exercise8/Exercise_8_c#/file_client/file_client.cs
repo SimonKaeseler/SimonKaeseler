@@ -16,9 +16,7 @@ namespace tcp
         /// </summary>
         const int BUFSIZE = 1000;
 
-        private readonly TcpClient client;
-        private NetworkStream serverStream;
-        private string ip,path;
+      
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Client"/> class.
@@ -28,21 +26,28 @@ namespace tcp
         /// </param>
         private Client(string[] args)
         {
-            ip = args[0];
-            path = args[1];
+			//The arguments that user calls the program  with is args[0] = IP and args[1] file (includingpath)
+			var IP = args [0];
+			var file = args [1];
 
-            //Creating socket for client and connecting
-            client = new TcpClient();
-            Console.WriteLine("Connecting");
-            client.Connect(ip, PORT);
-            Console.WriteLine("Connected");
+			//Creating the client socket
+			Console.WriteLine ("Trying to connect...");
+			TcpClient client = new TcpClient ();
+			client.Connect (IP, PORT);
+			Console.WriteLine ("Connected to server!");
 
-            //Fetching stream and send items to server
-            serverStream = client.GetStream();
-            LIB.writeTextTCP(serverStream,path);
-            Console.WriteLine("items sent");
-            //Recieves the file from server
-            ReceiveFile(LIB.extractFileName(path),serverStream);
+			//Getting the stream
+			var serverStream = client.GetStream ();
+			Console.WriteLine ("Stream caught...");
+
+			//Requesting file from the serverstream
+			Console.WriteLine("Requesting file from server...");
+			LIB.writeTextTCP (serverStream, file);
+
+			//Recieving
+			Console.WriteLine ("Recieving...");
+			var filename = LIB.extractFileName (file);
+			ReceiveFile (file, serverStream);
         }
 
         /// <summary>
@@ -56,32 +61,35 @@ namespace tcp
         /// </param>
         private void ReceiveFile(String fileName, NetworkStream io)
         {
-            Console.WriteLine("entering reciever");
-            long filesize = LIB.getFileSizeTCP(io);
-            if (filesize != 0)
-            {
-                
-                Byte[] inStream = new byte[BUFSIZE];
+			//Getting the size of the requested file
+			var fileLength = LIB.getFileSizeTCP (io);
 
-                var file = File.Create(fileName);
-                var cntr = 0;
+			if (fileLength == 0) 
+			{
+				Console.WriteLine ("Filesize was 0, file doesnt excist...");
+				return;
+			}
 
-                while (cntr < filesize)
-                {
-                    var streamSize = serverStream.Read(inStream, 0, BUFSIZE);
-                    file.Write(inStream, 0, streamSize);
-                    Console.WriteLine(streamSize);
-                    cntr += streamSize;
-                }
+			//Using this bytesize to write the file byte by byte
+			var recievedBytes = new byte[BUFSIZE];
 
-                io.Close();
-                file.Close();
-            }
-            else
-            {
-                throw new ArgumentException("File does not excist");
-            }
-            
+			//Creating a new file to save the recieved file in
+			var file = File.Create (fileName);
+			Console.WriteLine ("Creating new file...");
+			int i = 0;
+
+			//Writing in the file
+			Console.WriteLine ("Writing new file...");
+			while (i < fileLength) 
+			{
+				int size = io.Read (recievedBytes, 0, BUFSIZE);
+				Console.WriteLine ("{0} bytes writtin in file...",size);
+				file.Write (recievedBytes, 0, size);
+				i += size;
+			}
+			Console.WriteLine ("File is completed at {0} bytes", file.Length);
+
+			file.Close ();
         }
 
         /// <summary>
