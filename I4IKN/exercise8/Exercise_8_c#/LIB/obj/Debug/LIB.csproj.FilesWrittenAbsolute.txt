@@ -1,0 +1,10 @@
+/root/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/LIB/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/root/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/LIB/bin/Debug/LIB.dll.mdb
+/root/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/LIB/bin/Debug/LIB.dll
+/root/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/LIB/obj/Debug/LIB.dll
+/root/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/LIB/obj/Debug/LIB.dll.mdb
+/home/ikn/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/LIB/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/home/ikn/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/LIB/bin/Debug/LIB.dll.mdb
+/home/ikn/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/LIB/bin/Debug/LIB.dll
+/home/ikn/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/LIB/obj/Debug/LIB.dll
+/home/ikn/SimonKaeseler/I4IKN/exercise8/Exercise_8_c#/LIB/obj/Debug/LIB.dll.mdb
