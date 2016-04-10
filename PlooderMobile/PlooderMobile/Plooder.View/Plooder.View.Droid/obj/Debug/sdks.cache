@@ -2,11 +2,11 @@
 <Sdk>
   <AndroidApiLevel>23</AndroidApiLevel>
   <AndroidApiLevelName>23</AndroidApiLevelName>
-  <AndroidNdkPath>C:\Users\Simon\Documents\Android\ndk\android-ndk-r10e</AndroidNdkPath>
+  <AndroidNdkPath>C:\Users\Simon\Documents\Android\ndk\android-ndk-r10d</AndroidNdkPath>
   <AndroidSdkBuildToolsPath>C:\Users\Simon\AppData\Local\Android\android-sdk\build-tools\23.0.1</AndroidSdkBuildToolsPath>
   <AndroidSdkBuildToolsBinPath>C:\Users\Simon\AppData\Local\Android\android-sdk\build-tools\23.0.1</AndroidSdkBuildToolsBinPath>
   <AndroidSdkPath>C:\Users\Simon\AppData\Local\Android\android-sdk</AndroidSdkPath>
-  <JavaSdkPath>C:\Program Files\Java\jdk1.7.0_79</JavaSdkPath>
+  <JavaSdkPath>C:\Program Files (x86)\Java\jdk1.7.0_71</JavaSdkPath>
   <MonoAndroidBinPath>C:\Program Files (x86)\MSBuild\Xamarin\Android</MonoAndroidBinPath>
   <MonoAndroidToolsPath>C:\Program Files (x86)\MSBuild\Xamarin\Android</MonoAndroidToolsPath>
   <ReferenceAssemblyPaths>

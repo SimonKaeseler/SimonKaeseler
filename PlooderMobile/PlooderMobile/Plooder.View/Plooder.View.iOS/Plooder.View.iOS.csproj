@@ -98,8 +98,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Plooder.View\Plooder.Core.csproj">
-      <Name>Plooder.Core</Name>
+    <ProjectReference Include="..\Plooder.View\Plooder.View.csproj">
+      <Name>Plooder.View</Name>
       <Project>{C1B88DCB-B934-4D4B-AB78-13E0F9D09201}</Project>
     </ProjectReference>
   </ItemGroup>

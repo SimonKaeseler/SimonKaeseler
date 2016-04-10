@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Hello">Hello World, Click Me!</string>
+    <string name="First">First</string>
+    <string name="Second">Second</string>
+    <string name="Third">Third</string>
+    <string name="ApplicationName">Plooder</string>
+</resources>

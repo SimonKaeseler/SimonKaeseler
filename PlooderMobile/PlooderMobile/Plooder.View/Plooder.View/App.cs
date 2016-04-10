@@ -1,32 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Plooder.Core;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Plooder.View
 {
     public class App : Application
     {
+        
+
         public App()
         {
+            MainPage = new MainPage();
 
-            MainPage = new HelloXamlPage();
-            //// The root page of your application
-            //MainPage = new ContentPage
-            //{
-            //    Content = new StackLayout
-            //    {
-            //        VerticalOptions = LayoutOptions.Center,
-            //        Children = {
-            //            new Label {
-            //                XAlign = TextAlignment.Center,
-            //                Text = "Welcome to Xamarin Forms!"
-            //            }
-            //        }
-            //    }
-            //};
         }
 
         protected override void OnStart()
@@ -43,5 +26,7 @@ namespace Plooder.View
         {
             // Handle when your app resumes
         }
+
+
     }
 }

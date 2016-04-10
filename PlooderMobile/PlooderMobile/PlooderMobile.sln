@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plooder.View.Droid", "Plooder.View\Plooder.View.Droid\Plooder.View.Droid.csproj", "{AC39A84F-04F5-457B-BA18-7B4A02681A2A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plooder.View.iOS", "Plooder.View\Plooder.View.iOS\Plooder.View.iOS.csproj", "{6549C554-1F9F-4B8F-95FA-849550894966}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plooder.Core", "Plooder.View\Plooder.View\Plooder.Core.csproj", "{C1B88DCB-B934-4D4B-AB78-13E0F9D09201}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plooder.View", "Plooder.View\Plooder.View\Plooder.View.csproj", "{C1B88DCB-B934-4D4B-AB78-13E0F9D09201}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
