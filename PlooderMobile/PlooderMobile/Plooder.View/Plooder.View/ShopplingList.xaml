@@ -2,6 +2,10 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Plooder.View.ShopplingList">
-  <Label Text="What up" VerticalOptions="Center" HorizontalOptions="Center" />
-
+  <Grid>
+    <Label Text="What up" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Button Text="Click Me!"
+           HorizontalOptions="Center"
+           VerticalOptions="End" />
+  </Grid>
 </ContentView>

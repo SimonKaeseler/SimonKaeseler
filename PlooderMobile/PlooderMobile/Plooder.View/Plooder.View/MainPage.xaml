@@ -7,10 +7,13 @@
              Padding="10, 0, 10, 10">
   <ContentPage.Content>
     <StackLayout Orientation="Vertical">
+<<<<<<< HEAD
             <Label Text="1"></Label>
+=======
+            <Label Text="1234"></Label>
+>>>>>>> b7493c280240b3490a1d661326cb4458feb943df
             <plooderControl:ShopplingList/>
             <Label Text="There"></Label>
     </StackLayout>
   </ContentPage.Content>
-  
 </ContentPage>
