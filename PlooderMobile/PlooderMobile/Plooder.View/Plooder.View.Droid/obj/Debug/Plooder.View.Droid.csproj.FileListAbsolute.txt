@@ -29,3 +29,6 @@ E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View.Droid
 E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View.Droid\bin\Debug\Plooder.View.dll.mdb
 E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View.Droid\obj\Debug\Plooder.View.Droid.dll.mdb
 E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View.Droid\bin\Debug\Plooder.View.Droid.dll.mdb
+C:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View.Droid\obj\Debug\Plooder.View.Droid.csprojResolveAssemblyReference.cache
+C:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View.Droid\obj\Debug\Plooder.View.Droid.dll
+C:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View.Droid\obj\Debug\Plooder.View.Droid.pdb

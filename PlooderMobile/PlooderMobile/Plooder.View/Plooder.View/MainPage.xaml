@@ -1,15 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:Plooder.ViewModel;assembly=Plooder.ViewModel"
              x:Class="Plooder.View.MainPage"
-             xmlns:plooderControl="clr-namespace:Plooder.View;assembly=Plooder.View"
              Title="MainPage"
              Padding="10, 0, 10, 10">
   <ContentPage.Content>
     <StackLayout Orientation="Vertical">
-            <Label Text="1234"></Label>
-            <plooderControl:ShopplingList/>
-            <Label Text="There"></Label>
+      <StackLayout.BindingContext>
+        <viewModel:TestViewModel/>
+      </StackLayout.BindingContext>
+            <ListView x:Name="ItemView" ItemsSource="{Binding}">
+              <ListView.ItemTemplate>
+                <DataTemplate>
+                  <TextCell Text="{Binding}"></TextCell>
+                </DataTemplate>
+              </ListView.ItemTemplate>
+            </ListView>
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>
