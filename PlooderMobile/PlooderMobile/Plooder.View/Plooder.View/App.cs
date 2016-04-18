@@ -8,7 +8,7 @@ namespace Plooder.View
 
         public App()
         {
-            MainPage = new MainPage();
+            MainPage = new View.MainPage();
 
         }
 

@@ -115,8 +115,8 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Plooder.View\Plooder.View.csproj">
-      <Name>Plooder.View</Name>
+    <ProjectReference Include="..\Plooder.View\Plooder.csproj">
+      <Name>Plooder</Name>
       <Project>{C1B88DCB-B934-4D4B-AB78-13E0F9D09201}</Project>
     </ProjectReference>
   </ItemGroup>
