@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using Transportlaget;
 using Library;
+using Linklaget;
 
 namespace Application
 {
@@ -54,6 +55,7 @@ namespace Application
 		public static void Main (string[] args)
 		{
 			new file_client(args);
+		
 		}
 	}
 }

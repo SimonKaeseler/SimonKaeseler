@@ -1,5 +1,6 @@
 using System;
 using System.IO.Ports;
+using System.Collections.Generic;
 
 /// <summary>
 /// Link.
@@ -54,6 +55,34 @@ namespace Linklaget
 		public void send (byte[] buf, int size)
 		{
 	    	// TO DO Your own code
+			//Convert byte array to strings, send each string, terminate with /n
+			//OBS: A 
+
+			char[] charsToSend = new char[size];
+			int currentIndex;
+
+			for (currentIndex = 0; currentIndex < size; currentIndex++) 
+			{
+				if (buf [currentIndex] == 'A') {
+					charsToSend [currentIndex] = 'B';
+					currentIndex++;
+					charsToSend [currentIndex] = 'C';
+				} else if (buf [currentIndex] == 'B') {
+					charsToSend [currentIndex] = 'C';
+					currentIndex++;
+					charsToSend [currentIndex] = 'D';
+				} else 
+				{
+					charsToSend [currentIndex] = (char)buf [currentIndex];
+				}
+			}
+
+			charsToSend[currentIndex] = 'A';
+			currentIndex ++;
+			charsToSend[currentIndex] = '\n';
+
+			Console.WriteLine (charsToSend.ToString ());
+			serialPort.Write (charsToSend.ToString());
 		}
 
 		/// <summary>
@@ -68,6 +97,7 @@ namespace Linklaget
 		public int receive (ref byte[] buf)
 		{
 	    	// TO DO Your own code
+			return 1;
 		}
 	}
 }
