@@ -96,8 +96,26 @@ namespace Linklaget
 		/// </param>
 		public int receive (ref byte[] buf)
 		{
-	    	// TO DO Your own code
-			return 1;
+			int toRead = serialPort.BytesToRead;
+			byte[] bytes = new byte[toRead];
+			serialPort.Read(bytes, 0, toRead);
+
+			for (int i = 0; i < toRead; i++)
+			{
+				while (bytes[i] != DELIMITER)
+				{
+					if (bytes[i] == (byte)'B' && bytes[i+1] == (byte)'C')
+					{
+						bytes[i] = (byte) 'A';
+					}
+					else if (bytes[i] == (byte) 'C' && bytes[i + 1] == (byte) 'D')
+					{
+						bytes[i] = (byte) 'D';
+					}
+
+				}
+			}		
+			return bytes.Length;
 		}
 	}
 }
