@@ -16,8 +16,8 @@ namespace tcp
         /// The BUFSIZE
         /// </summary>
         public const int BUFSIZE = 1000;
-
-        public int fileLength;
+		private const bool running = true;
+       
      
         /// <summary>
         /// Initializes a new instance of the <see cref="Server"/> class.
@@ -30,31 +30,50 @@ namespace tcp
         /// </summary>
         private Server()
         {
-            var serverSocket = new TcpListener(IPAddress.Any,PORT);
-            var client = new TcpClient();
-            var reader = client.GetStream();
-            serverSocket.Start();
-            Console.WriteLine("Server is started...");
+			TcpListener server = new TcpListener (PORT);
+			TcpClient client = new TcpClient ();
+			//gets set when clients gets stream
+			NetworkStream tcpStream;
 
-            try
-            {
-                //Returns a TCPClient and saves it in "client"
-                client = serverSocket.AcceptTcpClient();
-                Console.WriteLine("Connection established...");
-                reader = client.GetStream();
-                
-                string data = LIB.readTextTCP(reader);
+			server.Start ();
 
-                Console.WriteLine("Received: {0}", data);
-                SendFile(data, fileLength, reader);
-            }
-            catch (Exception)
-            {
-                throw new SocketException();
-            }
-            
-            client.Close();
-            serverSocket.Stop();
+			while (running) 
+			{
+				try
+				{
+				
+					//Get the client
+					Console.WriteLine("Accepting client(s)...");
+					client = server.AcceptTcpClient ();
+					tcpStream = client.GetStream();
+
+					//Read client request
+					Console.WriteLine("Reading client request...");
+					var clientRequest = LIB.readTextTCP(tcpStream);
+					Console.WriteLine("Request from client: " + clientRequest);
+
+					//Checking the size of the file
+					var lengthOfFile = LIB.check_File_Exists (clientRequest).ToString();
+					LIB.writeTextTCP (tcpStream, lengthOfFile);
+
+					var sizeofFile = Convert.ToInt32(lengthOfFile);
+
+					//Sending the file
+					SendFile(clientRequest,sizeofFile,tcpStream);
+				}
+				catch(Exception execption) 
+				{
+					Console.WriteLine ("An error occured: {0}",execption);
+				}
+
+			}
+
+			client.Close ();
+			Console.WriteLine ("Client connection terminated...");
+			server.Stop ();
+			Console.WriteLine ("Serer stopped...");
+			Console.ReadKey ();
+
         }
 
         /// Sends the file.
@@ -69,24 +88,29 @@ namespace tcp
         /// Network stream for writing to the client.
         /// </param>
         private void SendFile(String fileName, int fileSize, NetworkStream io)
-        {
-            //The filecheck returns the size of the file, if it excists
-            long filesize = LIB.check_File_Exists(fileName);
-            if (filesize != 0)
-            {
-                var file = File.Open(fileName, FileMode.Open);
-                byte[] bytes = new byte[BUFSIZE];
+        {  
 
-                //iterates through the fie while it reads 1000 bits at a time.
-                for (int i = 0; i < fileSize; i += BUFSIZE)
-                {
-                    //Reads the file "bytes" with zero offset 
-                    var size = file.Read(bytes, 0, BUFSIZE);
-                    io.Write(bytes,0,size);
-                }
-                file.Close();
-            }
 
+			if (fileSize == 0) 
+			{
+				Console.WriteLine ("Bad request, filesize = 0");
+				return;
+			}
+
+
+			var file = File.Open (fileName, FileMode.Open);
+
+			byte[] data = new byte[BUFSIZE];
+
+			//For loop, that sending 1000 bytes at at time, and prints progress
+			for (int i = 0; i < fileSize; i += BUFSIZE) 
+			{
+				int size = file.Read (data, 0, BUFSIZE);
+				Console.WriteLine (size);
+				io.Write (data, 0, size);
+			}
+
+			file.Close ();
         }
 
         /// <summary>
