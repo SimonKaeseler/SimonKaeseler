@@ -117,7 +117,8 @@ namespace Linklaget
 					}
 
 				}
-			}		
+			}
+			buf = bytes;
 			return bytes.Length;
 		}
 	}
