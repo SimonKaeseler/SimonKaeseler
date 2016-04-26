@@ -58,8 +58,8 @@ namespace Linklaget
 			//Convert byte array to strings, send each string, terminate with /n
 			//OBS: A 
 
-			char[] charsToSend = new char[size];
-			int currentIndex;
+			char[] charsToSend = new char[size+3];
+			int currentIndex = 0;
 
 			for (currentIndex = 0; currentIndex < size; currentIndex++) 
 			{
@@ -80,9 +80,12 @@ namespace Linklaget
 			charsToSend[currentIndex] = 'A';
 			currentIndex ++;
 			charsToSend[currentIndex] = '\n';
+			string package = null;
 
-			Console.WriteLine (charsToSend.ToString ());
-			serialPort.Write (charsToSend.ToString());
+			foreach (char c in charsToSend) {package += c;};
+
+			Console.WriteLine (package);
+			serialPort.Write (package);
 		}
 
 		/// <summary>
@@ -114,7 +117,8 @@ namespace Linklaget
 					}
 
 				}
-			}		
+			}
+			buf = bytes;
 			return bytes.Length;
 		}
 	}

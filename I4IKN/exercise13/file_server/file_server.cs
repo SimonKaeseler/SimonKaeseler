@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using Transportlaget;
 using Library;
+using Linklaget;
 
 namespace Application
 {
@@ -47,6 +48,14 @@ namespace Application
 		public static void Main (string[] args)
 		{
 			new file_server();
+
+			Link link = new Link (255);
+
+			string teststring = "mongoBongo";
+			byte[] b = System.Text.Encoding.UTF8.GetBytes(teststring.ToUpper());
+
+			link.send (b, b.Length);
+
 		}
 	}
 }

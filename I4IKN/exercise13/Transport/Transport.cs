@@ -6,11 +6,14 @@ using Linklaget;
 /// </summary>
 namespace Transportlaget
 {
+
+
 	/// <summary>
 	/// Transport.
 	/// </summary>
 	public class Transport
 	{
+
 		/// <summary>
 		/// The link.
 		/// </summary>
@@ -102,7 +105,9 @@ namespace Transportlaget
 		/// </param>
 		public void send(byte[] buf, int size)
 		{
-			// TO DO Your own code
+			checksum.calcChecksum (ref buf, size);
+
+			link.send (buf, size);
 		}
 
 		/// <summary>
@@ -113,8 +118,21 @@ namespace Transportlaget
 		/// </param>
 		public int receive (ref byte[] buf)
 		{
-			// TO DO Your own code
+			while (true) 
+			{
+				byte[] buffToRecieve = new byte[buf.Length];
+				int sizeOfData = link.receive (buffToRecieve);
 
+				if (checksum.checkChecksum (buffToRecieve, sizeOfData)) 
+				{
+					sendAck (1);
+					Array.Copy (buffToRecieve, 4, buf, 0, buf.Length);
+
+					return sizeOfData;
+				}
+
+				sendAck (0);
+			}
 			return 1;
 		}
 	}
