@@ -68,7 +68,7 @@ namespace Linklaget
 					currentIndex++;
 					charsToSend [currentIndex] = 'C';
 				} else if (buf [currentIndex] == 'B') {
-					charsToSend [currentIndex] = 'C';
+					charsToSend [currentIndex] = 'B';
 					currentIndex++;
 					charsToSend [currentIndex] = 'D';
 				} else 
@@ -104,22 +104,23 @@ namespace Linklaget
 			serialPort.Read(bytes, 0, toRead);
 
 			for (int i = 0; i < toRead; i++)
-			{
-				while (bytes[i] != DELIMITER)
-				{
+			{				
 					if (bytes[i] == (byte)'B' && bytes[i+1] == (byte)'C')
 					{
 						bytes[i] = (byte) 'A';
 					}
-					else if (bytes[i] == (byte) 'C' && bytes[i + 1] == (byte) 'D')
+					else if (bytes[i] == (byte) 'B' && bytes[i + 1] == (byte) 'D')
 					{
-						bytes[i] = (byte) 'D';
+						bytes[i] = (byte) 'B';
 					}
-
-				}
+					else
+					{
+						buf[i] = bytes[i]
+					}
+				
 			}
-			buf = bytes;
-			return bytes.Length;
+			
+			return buf.Length;
 		}
 	}
 }

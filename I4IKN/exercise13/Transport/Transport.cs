@@ -105,9 +105,17 @@ namespace Transportlaget
 		/// </param>
 		public void send(byte[] buf, int size)
 		{
-			checksum.calcChecksum (ref buf, size);
+			while (!receiveAck())
+			{
+			byte[] buffToSend = new byte[size+4];
+			buffToSend[2] = seqNo;
+			buffToSend[3] = 0;
+			
+			Array.Copy(buf, 0, buffToSend, 4, size);
+			checksum.calcChecksum (ref buffToSend, size + 4);
 
-			link.send (buf, size);
+			link.send (buffToSend, buffToSend.Length);
+			}
 		}
 
 		/// <summary>
@@ -121,19 +129,18 @@ namespace Transportlaget
 			while (true) 
 			{
 				byte[] buffToRecieve = new byte[buf.Length];
-				int sizeOfData = link.receive (buffToRecieve);
+				int sizeOfData = link.receive (ref buffToRecieve);
 
 				if (checksum.checkChecksum (buffToRecieve, sizeOfData)) 
 				{
-					sendAck (1);
-					Array.Copy (buffToRecieve, 4, buf, 0, buf.Length);
+					sendAck (seqNo);
+					Array.Copy (buffToRecieve, 4, buf, 0, sizeOfData-4);
 
-					return sizeOfData;
+					return sizeOfData-4;
 				}
 
-				sendAck (0);
+				sendAck (!seqNo);
 			}
-			return 1;
 		}
 	}
 }
