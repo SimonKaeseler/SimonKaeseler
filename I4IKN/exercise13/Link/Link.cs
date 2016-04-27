@@ -115,8 +115,8 @@ namespace Linklaget
 					}
 					else
 					{
-						buf[i] = bytes[i]
-					}
+					buf [i] = bytes [i];
+				}
 				
 			}
 			

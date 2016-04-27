@@ -32,8 +32,12 @@ namespace Application
 	    	
 			Transport _transport = new Transport (BUFSIZE);
 
-			byte[] buffer = new byte[]{ (byte)'A', (byte)'B', (byte)'C' };
-			_transport.send(buffer, buffer.Length);
+			//byte[] buffer = new byte[]{ (byte)'A', (byte)'B', (byte)'C' };
+			//_transport.send(buffer, buffer.Length);
+			byte[] filename = Encoding.UTF8.GetBytes (args[0]);
+			_transport.send (filename, filename.Length);
+
+			receiveFile (args[0], _transport);
 	    }
 
 		/// <summary>
@@ -48,6 +52,26 @@ namespace Application
 		private void receiveFile (String fileName, Transport transport)
 		{
 			// TO DO Your own code
+			if (fileName.Length == 0) 
+			{
+				Console.WriteLine ("Filelength was 0, doesnt excist...");
+				return;
+			}
+
+			Console.WriteLine ("Creating file...");
+			var fileToRecieve = File.Create (fileName);
+
+			byte[] bytesToRecieve = new byte[BUFSIZE];
+			int size = 1;
+
+			while (size > 0) 
+			{
+				size = transport.receive (ref bytesToRecieve);
+				fileToRecieve.Write (bytesToRecieve, 0, size);
+				Console.WriteLine ("{0} bytes written to file", size);
+			}
+
+			fileToRecieve.Close ();
 		}
 
 		/// <summary>

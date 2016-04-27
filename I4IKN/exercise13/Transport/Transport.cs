@@ -131,15 +131,18 @@ namespace Transportlaget
 				byte[] buffToRecieve = new byte[buf.Length];
 				int sizeOfData = link.receive (ref buffToRecieve);
 
-				if (checksum.checkChecksum (buffToRecieve, sizeOfData)) 
+				var check = checksum.checkChecksum (buffToRecieve, sizeOfData);
+
+				if (check && seqNo != old_seqNo) 
 				{
-					sendAck (seqNo);
+					sendAck (check);
 					Array.Copy (buffToRecieve, 4, buf, 0, sizeOfData-4);
 
+					old_seqNo = seqNo;
 					return sizeOfData-4;
 				}
 
-				sendAck (!seqNo);
+				sendAck (check);
 			}
 		}
 	}
