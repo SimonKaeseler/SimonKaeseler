@@ -29,7 +29,11 @@ namespace Application
 		/// </param>
 	    private file_client(String[] args)
 	    {
-	    	// TO DO Your own code
+	    	
+			Transport _transport = new Transport (BUFSIZE);
+
+			byte[] buffer = new byte[]{ (byte)'A', (byte)'B', (byte)'C' };
+			_transport.send(buffer, buffer.Length);
 	    }
 
 		/// <summary>

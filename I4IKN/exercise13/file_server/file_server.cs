@@ -36,7 +36,22 @@ namespace Application
 		/// </param>
 		private void sendFile(String fileName, long fileSize, Transport transport)
 		{
-			// TO DO Your own code
+			long fileLength = LIB.check_File_Exists(fileName);
+			LIB.SendStringByTrans (transport, fileName);
+
+			if (fileLength == 0)
+				return;
+
+			FileStream file = File.Open (fileName, FileMode.Open);
+
+			byte[] data = new byte[BUFSIZE];
+			for (int i = 0; i < fileLength; i += BUFSIZE) 
+			{
+				int size = file.Read (data, 0, BUFSIZE);
+				Console.WriteLine (size);
+				transport.send (data, size);
+			}
+			file.Close ();
 		}
 
 		/// <summary>
