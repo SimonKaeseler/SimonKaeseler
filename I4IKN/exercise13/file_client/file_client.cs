@@ -35,7 +35,12 @@ namespace Application
 			//byte[] buffer = new byte[]{ (byte)'A', (byte)'B', (byte)'C' };
 			//_transport.send(buffer, buffer.Length);
 			byte[] filename = Encoding.UTF8.GetBytes (args[0]);
+			try{
 			_transport.send (filename, filename.Length);
+				while(!_transport.Ack())
+				{}
+			}
+			catch(TimeoutException){}
 
 			receiveFile (args[0], _transport);
 	    }

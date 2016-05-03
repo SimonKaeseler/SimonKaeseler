@@ -145,5 +145,10 @@ namespace Transportlaget
 				sendAck (check);
 			}
 		}
+
+		public bool Ack()
+		{
+			return receiveAck ();
+		}
 	}
 }

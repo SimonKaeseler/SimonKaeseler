@@ -101,27 +101,34 @@ namespace Linklaget
 		{
 			int toRead = serialPort.BytesToRead;
 			byte[] bytes = new byte[toRead];
-			//serialPort.ReadTimeout = 10000;
+
+			try
+			{
 			serialPort.Read(bytes, 0, toRead);
 		
 
-			for (int i = 0; i < toRead; i++)
-			{				
+				for (int i = 0; i < toRead; i++)
+				{				
 					if (bytes[i] == (byte)'B' && bytes[i+1] == (byte)'C')
 					{
-						bytes[i] = (byte) 'A';
+						buf[i] = (byte) 'A';
 					}
 					else if (bytes[i] == (byte) 'B' && bytes[i + 1] == (byte) 'D')
 					{
-						bytes[i] = (byte) 'B';
+						buf[i] = (byte) 'B';
 					}
 					else
 					{
-					buf [i] = bytes [i];
+						buf [i] = bytes [i];
+					}
+
 				}
-				
 			}
-			
+			catch(TimeoutException) 
+			{
+				Console.WriteLine ("Read timed out - no bytes to read...");
+			}
+						
 			return buf.Length;
 		}
 	}
