@@ -55,6 +55,9 @@ namespace Application
 		private void sendFile(String fileName, long fileSize, Transport transport)
 		{
 			long fileLength = LIB.check_File_Exists(fileName);
+			
+			System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
+			_transport.send(encoding.GetBytes(fileLength.ToString()), fileLength);	
 
 			if (fileLength == 0) 
 			{

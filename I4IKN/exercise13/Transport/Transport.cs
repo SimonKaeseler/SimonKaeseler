@@ -135,14 +135,14 @@ namespace Transportlaget
 
 				if (check && seqNo != old_seqNo) 
 				{
-					sendAck (check);
+					sendAck (true);
 					Array.Copy (buffToRecieve, 4, buf, 0, sizeOfData-4);
 
-					old_seqNo = seqNo;
+					old_seqNo = buffer[2];
 					return sizeOfData-4;
 				}
 
-				sendAck (check);
+				sendAck (false);
 			}
 		}
 

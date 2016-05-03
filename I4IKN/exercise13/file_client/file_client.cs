@@ -31,18 +31,21 @@ namespace Application
 	    {
 	    	
 			Transport _transport = new Transport (BUFSIZE);
-
-			//byte[] buffer = new byte[]{ (byte)'A', (byte)'B', (byte)'C' };
-			//_transport.send(buffer, buffer.Length);
-			byte[] filename = Encoding.UTF8.GetBytes (args[0]);
+		
+			//string filename = Encoding.UTF8.GetBytes (args[0]);
+			string filename = "/root/Test.jpeg";
+			
 			try{
-			_transport.send (filename, filename.Length);
-				while(!_transport.Ack())
-				{}
+			// _transport.send (filename, filename.Length);
+			
+				System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
+				_transport.send(encoding.GetBytes(filename), filename.Length);							
 			}
-			catch(TimeoutException){}
+			catch(TimeoutException){
+				Console.WriteLine("Receive timed out");
+			}
 
-			receiveFile (args[0], _transport);
+			receiveFile (LIB.extractFileName(filename), _transport);
 	    }
 
 		/// <summary>
@@ -57,9 +60,20 @@ namespace Application
 		private void receiveFile (String fileName, Transport transport)
 		{
 			// TO DO Your own code
-			if (fileName.Length == 0) 
+			 byte[] bytesForSize = new byte[BUFSIZE];
+			int fsize = transport.receive(ref bytesForSize);
+			string String = "";
+
+			for (int i = 0; i < fsize; i++)
 			{
-				Console.WriteLine ("Filelength was 0, doesnt excist...");
+				String += (char)bytesForSize[i];
+			}
+			
+			int fileSize = int.Parse(String)
+			
+			if (fileSize == 0) 
+			{
+				Console.WriteLine ("Filelength was 0, doesnt exist...");
 				return;
 			}
 
@@ -67,13 +81,14 @@ namespace Application
 			var fileToRecieve = File.Create (fileName);
 
 			byte[] bytesToRecieve = new byte[BUFSIZE];
-			int size = 1;
+			int i = 0;
 
-			while (size > 0) 
+			while (i < fileSize) 
 			{
-				size = transport.receive (ref bytesToRecieve);
+				int size = transport.receive (ref bytesToRecieve);
 				fileToRecieve.Write (bytesToRecieve, 0, size);
 				Console.WriteLine ("{0} bytes written to file", size);
+				i += size;
 			}
 
 			fileToRecieve.Close ();
@@ -87,6 +102,7 @@ namespace Application
 		/// </param>
 		public static void Main (string[] args)
 		{
+			Console.WriteLine ("Client starting...");
 			new file_client(args);
 				
 		}
