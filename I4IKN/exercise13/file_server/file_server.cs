@@ -23,14 +23,21 @@ namespace Application
 			Transport transport = new Transport (BUFSIZE);
 			byte[] fileToSend = new byte[BUFSIZE];
 
-			int filesize = transport.receive (ref fileToSend);
-
-			string fileName = fileToSend.ToString ();
 
 			while (true) 
 			{
-				sendFile (fileName, filesize, transport);
-			}
+				try 
+				{
+					int filesize = transport.receive (ref fileToSend);
+					Console.WriteLine (filesize);
+					string fileName = fileToSend.ToString ();
+					sendFile (fileName, filesize, transport);
+				} 
+				catch (TimeoutException) 
+				{
+				}
+			}	
+
 		}
 
 		/// <summary>
@@ -48,7 +55,6 @@ namespace Application
 		private void sendFile(String fileName, long fileSize, Transport transport)
 		{
 			long fileLength = LIB.check_File_Exists(fileName);
-
 
 			if (fileLength == 0) 
 			{

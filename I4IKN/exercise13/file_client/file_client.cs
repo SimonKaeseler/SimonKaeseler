@@ -83,7 +83,6 @@ namespace Application
 		public static void Main (string[] args)
 		{
 			new file_client(args);
-
 				
 		}
 	}

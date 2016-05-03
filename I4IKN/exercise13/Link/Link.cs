@@ -101,7 +101,9 @@ namespace Linklaget
 		{
 			int toRead = serialPort.BytesToRead;
 			byte[] bytes = new byte[toRead];
+			//serialPort.ReadTimeout = 10000;
 			serialPort.Read(bytes, 0, toRead);
+		
 
 			for (int i = 0; i < toRead; i++)
 			{				

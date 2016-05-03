@@ -107,14 +107,14 @@ namespace Transportlaget
 		{
 			while (!receiveAck())
 			{
-			byte[] buffToSend = new byte[size+4];
-			buffToSend[2] = seqNo;
-			buffToSend[3] = 0;
-			
-			Array.Copy(buf, 0, buffToSend, 4, size);
-			checksum.calcChecksum (ref buffToSend, size + 4);
+				byte[] buffToSend = new byte[size+4];
+				buffToSend[2] = seqNo;
+				buffToSend[3] = 0;
+				
+				Array.Copy(buf, 0, buffToSend, 4, size);
+				checksum.calcChecksum (ref buffToSend, size + 4);
 
-			link.send (buffToSend, buffToSend.Length);
+				link.send (buffToSend, buffToSend.Length);
 			}
 		}
 
