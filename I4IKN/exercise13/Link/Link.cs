@@ -100,68 +100,39 @@ namespace Linklaget
 		public int receive (ref byte[] buf)
 		{
 
-//			while (serialPort.ReadByte () != (byte)'A') {
-//			}
-//			int toRead = serialPort.BytesToRead;
-//			byte[] bytes = new byte[toRead];
-//
-//			try
-//			{
-//			serialPort.Read(bytes, 0, toRead);
-//		
-//
-//				for (int i = 0; i < toRead; i++)
-//				{				
-//					if (bytes[i] == (byte)'B' && bytes[i+1] == (byte)'C')
-//					{
-//						buf[i] = (byte) 'A';
-//					}
-//					else if (bytes[i] == (byte) 'B' && bytes[i + 1] == (byte) 'D')
-//					{
-//						buf[i] = (byte) 'B';
-//					}
-//					else
-//					{
-//						buf [i] = bytes [i];
-//					}
-//
-//				}
-//			}
-//			catch(TimeoutException) 
-//			{
-//				Console.WriteLine ("Read timed out - no bytes to read...");
-//			}
-//						
-//			return buf.Length;
 			while (serialPort.ReadByte () != (byte)'A') {
 			}
+			int toRead = serialPort.BytesToRead;
+			byte[] bytes = new byte[toRead];
 
-			int readBytes = 0;
-			byte c;
-			while ((c = (byte)serialPort.ReadByte ()) != (byte)'A') 
+			try
 			{
-				buffer [readBytes] = c;
-				readBytes++;
-			}
+			serialPort.Read(bytes, 0, toRead);
+		
 
-			int returnBufSize = 0;
-			for (int i = 0; i < readBytes; i++, returnBufSize++) 
-			{
-				if (buffer [i] == 'B') 
-				{
-					i++;
-					if (buffer [i] == 'C')
-						buf [returnBufSize] = (byte)'A';
-					else if (buffer [i] == 'D')
-						buf [returnBufSize] = (byte)'B';
-				} else 
-				{
-					buf [returnBufSize] = buffer [i];
+				for (int i = 0; i < toRead; i++)
+				{				
+					if (bytes[i] == (byte)'B' && bytes[i+1] == (byte)'C')
+					{
+						buf[i] = (byte) 'A';
+					}
+					else if (bytes[i] == (byte) 'B' && bytes[i + 1] == (byte) 'D')
+					{
+						buf[i] = (byte) 'B';
+					}
+					else
+					{
+						buf [i] = bytes [i];
+					}
+
 				}
 			}
-
-			return returnBufSize;
-		}
+			catch(TimeoutException) 
+			{
+				Console.WriteLine ("Read timed out - no bytes to read...");
+			}
+						
+			return buf.Length;
 		}
 	}
-
+}
