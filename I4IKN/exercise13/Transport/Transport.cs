@@ -142,25 +142,61 @@ namespace Transportlaget
 		/// <param name='buffer'>
 		/// Buffer.
 		/// </param>
+//		public int receive (ref byte[] buf)
+//		{
+//			while (true) 
+//			{
+//				//byte[] buffToRecieve = new byte[buf.Length];
+//				int sizeOfData = link.receive (ref buffer);
+//
+//				var check = checksum.checkChecksum (buffer, sizeOfData);
+//
+//				if (check && seqNo != old_seqNo) 
+//				{
+//					sendAck (true);
+//					Array.Copy (buffer, 4, buf, 0, sizeOfData-4);
+//
+//					old_seqNo = buffer[2];
+//					return sizeOfData-4;
+//				}
+//
+//				sendAck (false);
+//			}
+//		}
 		public int receive (ref byte[] buf)
 		{
 			while (true) 
 			{
-				//byte[] buffToRecieve = new byte[buf.Length];
-				int sizeOfData = link.receive (ref buffer);
-
-				var check = checksum.checkChecksum (buffer, sizeOfData);
-
-				if (check && seqNo != old_seqNo) 
+				try
 				{
-					sendAck (true);
-					Array.Copy (buffer, 4, buf, 0, sizeOfData-4);
+					var receivedDataSize = link.receive (ref buffer);
 
-					old_seqNo = buffer[2];
-					return sizeOfData-4;
+					//Check if seq-number is correct
+					if(buffer[2] != old_seqNo)
+					{
+						//Check if checksum is correct
+						if(checksum.checkChecksum(buffer, receivedDataSize))
+						{
+							old_seqNo = buffer[2];
+							sendAck(true);
+							Array.Copy (buffer, 4, buf, 0, receivedDataSize-4); //Copy(source, offset, destination, offset, lengthToCopy)
+							//old_seqNo = DEFAULT_SEQNO;
+							return receivedDataSize-4;
+						}
+						else
+						{
+							sendAck(false);
+						}
+					}
+					else
+					{
+						sendAck(false);
+					}
 				}
-
-				sendAck (false);
+				catch (Exception e)
+				{
+					Console.WriteLine (e.ToString ());
+				}
 			}
 		}
 
