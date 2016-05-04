@@ -13,28 +13,36 @@ namespace Application
 		/// The BUFSIZE
 		/// </summary>
 		private const int BUFSIZE = 1000;
-
+		private Transport _transport;
 		/// <summary>
 		/// Initializes a new instance of the <see cref="file_server"/> class.
 		/// </summary>
 		private file_server ()
 		{
 			// TO DO Your own code
-			Transport transport = new Transport (BUFSIZE);
+			_transport = new Transport (BUFSIZE);
 			byte[] fileToSend = new byte[BUFSIZE];
-
 
 			while (true) 
 			{
 				try 
 				{
-					int filesize = transport.receive (ref fileToSend);
+
+					int filesize = _transport.receive (ref fileToSend);
 					Console.WriteLine (filesize);
-					string fileName = fileToSend.ToString ();
-					sendFile (fileName, filesize, transport);
+					string fileName = "";
+
+					for(int i = 0;i < BUFSIZE; i++)
+					{
+						fileName += Convert.ToChar(fileToSend[i]);
+					}
+
+					Console.WriteLine("Filename: " + fileName);
+					sendFile (fileName, filesize, _transport);
 				} 
 				catch (TimeoutException) 
 				{
+					Console.WriteLine ("Timed out...");
 				}
 			}	
 
@@ -57,7 +65,9 @@ namespace Application
 			long fileLength = LIB.check_File_Exists(fileName);
 			
 			System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
-			_transport.send(encoding.GetBytes(fileLength.ToString()), fileLength);	
+
+			string toSend = fileLength.ToString ();
+			_transport.send(encoding.GetBytes(fileLength.ToString()), toSend.Length);	
 
 			if (fileLength == 0) 
 			{

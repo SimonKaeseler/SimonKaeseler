@@ -105,7 +105,9 @@ namespace Transportlaget
 		/// </param>
 		public void send(byte[] buf, int size)
 		{
-			while (!receiveAck())
+			bool sending = true;
+			errorCount = 0;
+			while (sending)
 			{
 				byte[] buffToSend = new byte[size+4];
 				buffToSend[2] = seqNo;
@@ -115,7 +117,23 @@ namespace Transportlaget
 				checksum.calcChecksum (ref buffToSend, size + 4);
 
 				link.send (buffToSend, buffToSend.Length);
+
+				try{
+					sending = !receiveAck();
+
+				}
+				catch(TimeoutException) {
+					errorCount++;
+					if (errorCount >= 5) 
+					{
+						Console.WriteLine ("Connection timed out ...");
+						break;
+					}
+				}
+
 			}
+
+
 		}
 
 		/// <summary>
@@ -128,15 +146,15 @@ namespace Transportlaget
 		{
 			while (true) 
 			{
-				byte[] buffToRecieve = new byte[buf.Length];
-				int sizeOfData = link.receive (ref buffToRecieve);
+				//byte[] buffToRecieve = new byte[buf.Length];
+				int sizeOfData = link.receive (ref buffer);
 
-				var check = checksum.checkChecksum (buffToRecieve, sizeOfData);
+				var check = checksum.checkChecksum (buffer, sizeOfData);
 
 				if (check && seqNo != old_seqNo) 
 				{
 					sendAck (true);
-					Array.Copy (buffToRecieve, 4, buf, 0, sizeOfData-4);
+					Array.Copy (buffer, 4, buf, 0, sizeOfData-4);
 
 					old_seqNo = buffer[2];
 					return sizeOfData-4;

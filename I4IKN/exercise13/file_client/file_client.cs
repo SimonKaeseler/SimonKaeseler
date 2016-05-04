@@ -28,16 +28,11 @@ namespace Application
 		/// Filnavn med evtuelle sti.
 		/// </param>
 	    private file_client(String[] args)
-	    {
-	    	
+	    {	    	
 			Transport _transport = new Transport (BUFSIZE);
-		
-			//string filename = Encoding.UTF8.GetBytes (args[0]);
-			string filename = "/root/Test.jpeg";
+			string filename = args[0];
 			
-			try{
-			// _transport.send (filename, filename.Length);
-			
+			try{						
 				System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
 				_transport.send(encoding.GetBytes(filename), filename.Length);							
 			}
@@ -60,7 +55,7 @@ namespace Application
 		private void receiveFile (String fileName, Transport transport)
 		{
 			// TO DO Your own code
-			 byte[] bytesForSize = new byte[BUFSIZE];
+			byte[] bytesForSize = new byte[BUFSIZE];
 			int fsize = transport.receive(ref bytesForSize);
 			string String = "";
 
@@ -69,7 +64,7 @@ namespace Application
 				String += (char)bytesForSize[i];
 			}
 			
-			int fileSize = int.Parse(String)
+			int fileSize = int.Parse (String);
 			
 			if (fileSize == 0) 
 			{
@@ -81,14 +76,14 @@ namespace Application
 			var fileToRecieve = File.Create (fileName);
 
 			byte[] bytesToRecieve = new byte[BUFSIZE];
-			int i = 0;
+			int index = 0;
 
-			while (i < fileSize) 
+			while (index < fileSize) 
 			{
 				int size = transport.receive (ref bytesToRecieve);
 				fileToRecieve.Write (bytesToRecieve, 0, size);
 				Console.WriteLine ("{0} bytes written to file", size);
-				i += size;
+				index += size;
 			}
 
 			fileToRecieve.Close ();
