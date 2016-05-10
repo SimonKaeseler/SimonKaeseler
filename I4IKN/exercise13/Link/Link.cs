@@ -99,7 +99,7 @@ namespace Linklaget
 		/// </param>
 		public int receive (ref byte[] buf)
 		{
-
+			Console.WriteLine ("Link.recieve");
 			try
 			{
 

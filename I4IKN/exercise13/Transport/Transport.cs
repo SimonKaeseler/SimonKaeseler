@@ -144,10 +144,11 @@ namespace Transportlaget
 		/// </param>
 		public int receive (ref byte[] buf)
 		{
+			Console.WriteLine ("Transport.recieve");
 			while (true) 
 			{
 				//byte[] buffToRecieve = new byte[buf.Length];
-				Console.WriteLine ("Link.recieve");
+
 				int sizeOfData = link.receive (ref buf);
 
 				var check = checksum.checkChecksum (buffer, sizeOfData);
