@@ -61,7 +61,7 @@ namespace Linklaget
 			char[] charsToSend = new char[size+3];
 			int currentIndex = 0;
 
-			for (currentIndex = 2; currentIndex < size; currentIndex++) 
+			for (currentIndex = 0; currentIndex < size; currentIndex++) 
 			{
 				if (buf [currentIndex] == 'A') {
 					charsToSend [currentIndex] = 'B';
