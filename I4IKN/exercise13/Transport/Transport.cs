@@ -147,7 +147,8 @@ namespace Transportlaget
 			while (true) 
 			{
 				//byte[] buffToRecieve = new byte[buf.Length];
-				int sizeOfData = link.receive (ref buffer);
+				Console.WriteLine ("Link.recieve");
+				int sizeOfData = link.receive (ref buf);
 
 				var check = checksum.checkChecksum (buffer, sizeOfData);
 

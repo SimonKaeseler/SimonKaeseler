@@ -100,14 +100,17 @@ namespace Linklaget
 		public int receive (ref byte[] buf)
 		{
 
-			while (serialPort.ReadByte () != (byte)'A') {
-			}
-			int toRead = serialPort.BytesToRead;
-			byte[] bytes = new byte[toRead];
-
 			try
 			{
-			serialPort.Read(bytes, 0, toRead);
+
+				while (serialPort.ReadByte () != (byte)'A') {
+				}
+
+
+				int toRead = serialPort.BytesToRead;
+				Console.WriteLine ("Bytes to read: {0}",toRead);
+				byte[] bytes = new byte[toRead];
+				serialPort.Read(bytes, 0, toRead);
 		
 
 				for (int i = 0; i < toRead; i++)

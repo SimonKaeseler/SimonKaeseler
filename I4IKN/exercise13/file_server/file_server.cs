@@ -27,7 +27,7 @@ namespace Application
 			{
 				try 
 				{
-
+					Console.WriteLine("Transport.recieve");
 					int filesize = _transport.receive (ref fileToSend);
 					Console.WriteLine (filesize);
 					string fileName = "";
