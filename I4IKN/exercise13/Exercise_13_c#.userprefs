@@ -1,19 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="file_server/file_server.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Link/Link.cs">
     <Files>
-      <File FileName="Transport/Transport.cs" Line="28" Column="28" />
-      <File FileName="Link/Link.cs" Line="12" Column="12" />
-      <File FileName="file_server/file_server.cs" Line="16" Column="16" />
-      <File FileName="file_client/file_client.cs" Line="26" Column="26" />
+      <File FileName="Transport/Transport.cs" Line="1" Column="1" />
+      <File FileName="Link/Link.cs" Line="1" Column="1" />
+      <File FileName="file_server/file_server.cs" Line="1" Column="1" />
+      <File FileName="file_client/file_client.cs" Line="1" Column="1" />
+      <File FileName="Transport/Checksum.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>buf</Value>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
