@@ -82,7 +82,10 @@ namespace Linklaget
 			charsToSend[currentIndex] = '\n';
 			string package = null;
 
-			foreach (char c in charsToSend) {package += c;};
+			for (int i = 2; i < charsToSend.Length; i++) 
+			{
+				package += charsToSend [i];
+			}
 
 			Console.WriteLine (package);
 			serialPort.Write (package);
