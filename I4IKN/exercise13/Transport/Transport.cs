@@ -64,12 +64,14 @@ namespace Transportlaget
 		/// </returns>
 		private bool receiveAck()
 		{
+            
 			byte[] buf = new byte[(int)TransSize.ACKSIZE];
 			int size = link.Receive(ref buf);
 			if (size != (int)TransSize.ACKSIZE) return false;
 			if(!checksum.checkChecksum(buf, (int)TransSize.ACKSIZE) ||
 					buf[(int)TransCHKSUM.SEQNO] != seqNo ||
 					buf[(int)TransCHKSUM.TYPE] != (int)TransType.ACK)
+                Console.WriteLine("buf[(int)TransCHKSUM.SEQNO]: {0} buf[(int)TransCHKSUM.TYPE]: {1}", buf[(int)TransCHKSUM.SEQNO], buf[(int)TransCHKSUM.TYPE]);
 				return false;
 			
 			seqNo = (byte)((buf[(int)TransCHKSUM.SEQNO] + 1) % 2);
@@ -90,7 +92,7 @@ namespace Transportlaget
 					(ackType ? (byte)buffer [(int)TransCHKSUM.SEQNO] : (byte)(buffer [(int)TransCHKSUM.SEQNO] + 1) % 2);
 			ackBuf [(int)TransCHKSUM.TYPE] = (byte)(int)TransType.ACK;
 			checksum.calcChecksum (ref ackBuf, (int)TransSize.ACKSIZE);
-
+            Console.WriteLine("ackBuf [(int)TransCHKSUM.SEQNO]: {0} ackBuf [(int)TransCHKSUM.TYPE]: {1} ", ackBuf[(int)TransCHKSUM.SEQNO], ackBuf[(int)TransCHKSUM.TYPE]);
 			link.Send(ackBuf, (int)TransSize.ACKSIZE);
 		}
 
