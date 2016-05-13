@@ -1,0 +1,15 @@
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View\bin\Debug\Plooder.View.dll
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View\bin\Debug\Plooder.View.pdb
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View\bin\Debug\Mono.Android.dll
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View\bin\Debug\Xamarin.Forms.Core.dll
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View\bin\Debug\Xamarin.Forms.Platform.dll
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View\bin\Debug\Xamarin.Forms.Xaml.dll
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View\bin\Debug\Mono.Android.xml
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View\bin\Debug\Xamarin.Forms.Core.xml
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View\bin\Debug\Xamarin.Forms.Xaml.xml
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View\obj\Debug\Plooder.csprojResolveAssemblyReference.cache
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View\obj\Debug\Plooder.View.View.MainPage.xaml.g.cs
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View\obj\Debug\Plooder.View.dll
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View\obj\Debug\Plooder.View.pdb
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View\obj\Debug\Plooder.View.dll.mdb
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.View\Plooder.View\bin\Debug\Plooder.View.dll.mdb

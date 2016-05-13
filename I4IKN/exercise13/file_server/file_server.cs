@@ -27,8 +27,8 @@ namespace Application
 			{
 				try 
 				{
-					int filesize = _transport.receive (ref fileToSend);
-					Console.WriteLine (filesize);
+					//int filesize = _transport.receive (ref fileToSend);
+					//Console.WriteLine (filesize);
 					string fileName = "";
 
 					for(int i = 0;i < BUFSIZE; i++)
@@ -37,7 +37,7 @@ namespace Application
 					}
 
 					Console.WriteLine("Filename: " + fileName);
-					sendFile (fileName, filesize, _transport);
+					sendFile (fileName, _transport);
 				} 
 				catch (TimeoutException) 
 				{
@@ -59,7 +59,7 @@ namespace Application
 		/// <param name='tl'>
 		/// Tl.
 		/// </param>
-		private void sendFile(String fileName, long fileSize, Transport transport)
+		private void sendFile(String fileName, Transport transport)
 		{
 			long fileLength = LIB.check_File_Exists(fileName);
 			
@@ -77,7 +77,7 @@ namespace Application
 			FileStream file = File.Open (fileName, FileMode.Open);
 
 			byte[] data = new byte[BUFSIZE];
-			for (int i = 0; i < fileSize; i += BUFSIZE) 
+			for (int i = 0; i < fileLength; i += BUFSIZE) 
 			{
 				int size = file.Read (data, 0, BUFSIZE);
 				Console.WriteLine (size);

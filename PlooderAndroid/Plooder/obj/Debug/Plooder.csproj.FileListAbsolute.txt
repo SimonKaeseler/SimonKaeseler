@@ -1,0 +1,15 @@
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\bin\Debug\Plooder.dll
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\bin\Debug\Plooder.pdb
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\bin\Debug\Plooder.Plooder.apk
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\bin\Debug\Plooder.Plooder-Signed.apk
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\Plooder.csprojResolveAssemblyReference.cache
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\Plooder.dll
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\Plooder.pdb
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\android\bin\Plooder.Plooder.apk
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\res\layout\main.xml
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\res\values\strings.xml
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\res\drawable\icon.png
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\R.cs.flag
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\uploadflags.txt
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\Plooder.dll.mdb
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\bin\Debug\Plooder.dll.mdb

@@ -1,0 +1,9 @@
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\assemblies\Plooder.dll
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\assemblies\Mono.Android.dll
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\assemblies\mscorlib.dll
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\assemblies\System.Core.dll
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\assemblies\System.dll
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\assemblies\System.Xml.dll
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\assemblies\System.Xml.Linq.dll
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\assemblies\System.Runtime.Serialization.dll
+E:\GIT\SimonKaeseler\PlooderAndroid\Plooder\obj\Debug\assemblies\System.ServiceModel.Internals.dll

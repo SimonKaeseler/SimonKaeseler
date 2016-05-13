@@ -57,14 +57,14 @@ namespace Application
 			// TO DO Your own code
 			byte[] bytesForSize = new byte[BUFSIZE];
 			int fsize = transport.receive(ref bytesForSize);
-			string String = "";
+			string stringToSend = "";
 
 			for (int i = 0; i < fsize; i++)
 			{
-				String += (char)bytesForSize[i];
+				stringToSend += (char)bytesForSize[i];
 			}
 			
-			int fileSize = int.Parse (String);
+			int fileSize = int.Parse (stringToSend);
 			
 			if (fileSize == 0) 
 			{
@@ -75,7 +75,7 @@ namespace Application
 			Console.WriteLine ("Creating file...");
 			var fileToRecieve = File.Create (fileName);
 
-			byte[] bytesToRecieve = new byte[BUFSIZE];
+			var bytesToRecieve = new byte[BUFSIZE];
 			int index = 0;
 
 			while (index < fileSize) 

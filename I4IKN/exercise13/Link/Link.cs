@@ -28,7 +28,7 @@ namespace Linklaget
 		/// <summary>
 		/// Initializes a new instance of the <see cref="link"/> class.
 		/// </summary>
-		public Link (int BUFSIZE)
+		public Link (int bufsize)
 		{
 			// Create a new SerialPort object with default settings.
 			serialPort = new SerialPort("/dev/ttyS1",115200,Parity.None,8,StopBits.One);
@@ -36,7 +36,7 @@ namespace Linklaget
 			if(!serialPort.IsOpen)
 				serialPort.Open();
 
-			buffer = new byte[(BUFSIZE*2)];
+			buffer = new byte[(bufsize*2)];
 
 			serialPort.ReadTimeout = 400;
 			serialPort.DiscardInBuffer ();
@@ -52,7 +52,7 @@ namespace Linklaget
 		/// <param name='size'>
 		/// Size.
 		/// </param>
-		public void send (byte[] buf, int size)
+		public void Send (byte[] buf, int size)
 		{
 	    	// TO DO Your own code
 			//Convert byte array to strings, send each string, terminate with /n
@@ -88,7 +88,7 @@ namespace Linklaget
 			}
 
 			Console.WriteLine (package);
-			serialPort.Write (package);
+		    if (package != null) serialPort.Write (package);
 		}
 
 		/// <summary>
@@ -100,7 +100,7 @@ namespace Linklaget
 		/// <param name='size'>
 		/// Size.
 		/// </param>
-		public int receive (ref byte[] buf)
+		public int Receive (ref byte[] buf)
 		{
 			Console.WriteLine ("Link.recieve");
 			try

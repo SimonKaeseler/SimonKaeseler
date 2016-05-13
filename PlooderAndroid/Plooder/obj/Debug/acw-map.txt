@@ -1,0 +1,4 @@
+Plooder.MainActivity, Plooder;md50d2f9466f4a2fcc065e5a3355489b47a.MainActivity
+Plooder.MainActivity, Plooder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md50d2f9466f4a2fcc065e5a3355489b47a.MainActivity
+Plooder.MainActivity;md50d2f9466f4a2fcc065e5a3355489b47a.MainActivity
+plooder.MainActivity;md50d2f9466f4a2fcc065e5a3355489b47a.MainActivity

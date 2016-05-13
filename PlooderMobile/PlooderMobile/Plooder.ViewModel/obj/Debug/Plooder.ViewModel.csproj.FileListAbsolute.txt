@@ -1,0 +1,7 @@
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.ViewModel\bin\Debug\Plooder.ViewModel.dll
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.ViewModel\bin\Debug\Plooder.ViewModel.pdb
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.ViewModel\obj\Debug\Plooder.ViewModel.csprojResolveAssemblyReference.cache
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.ViewModel\obj\Debug\Plooder.ViewModel.dll
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.ViewModel\obj\Debug\Plooder.ViewModel.pdb
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.ViewModel\obj\Debug\Plooder.ViewModel.dll.mdb
+E:\GIT\SimonKaeseler\PlooderMobile\PlooderMobile\Plooder.ViewModel\bin\Debug\Plooder.ViewModel.dll.mdb
