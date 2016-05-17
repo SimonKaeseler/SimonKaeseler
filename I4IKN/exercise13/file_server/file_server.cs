@@ -20,24 +20,26 @@ namespace Application
 		private file_server ()
 		{
 			// TO DO Your own code
-			_transport = new Transport (BUFSIZE);
-			byte[] fileToSend = new byte[BUFSIZE];
+
 
 			while (true) 
 			{
 				try 
 				{
-					//int filesize = _transport.receive (ref fileToSend);
-					//Console.WriteLine (filesize);
-					string fileName = "";
+					_transport = new Transport (BUFSIZE);
+					//byte[] fileToSend = new byte[BUFSIZE];
 
-					for(int i = 0;i < BUFSIZE; i++)
+					byte[] fileToSend = new byte[BUFSIZE];
+					int size = _transport.receive(ref fileToSend);
+					string stringToSend = "";
+
+					for (int i = 0; i < size; i++)
 					{
-						fileName += Convert.ToChar(fileToSend[i]);
+						stringToSend += (char)fileToSend[i];
 					}
 
-					Console.WriteLine("Filename: " + fileName);
-					sendFile (fileName, _transport);
+					Console.WriteLine("Filename: " + stringToSend);
+					sendFile (stringToSend, _transport);
 				} 
 				catch (TimeoutException) 
 				{
@@ -63,10 +65,9 @@ namespace Application
 		{
 			long fileLength = LIB.check_File_Exists(fileName);
 			
-			System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
-
-			string toSend = fileLength.ToString ();
-			_transport.send(encoding.GetBytes(fileLength.ToString()), toSend.Length);	
+			System.Text.UTF8Encoding  encoding=new System.Text.UTF8Encoding();
+			var stringToSend = fileLength.ToString ();
+			_transport.send(encoding.GetBytes(stringToSend), stringToSend.Length);	
 
 			if (fileLength == 0) 
 			{

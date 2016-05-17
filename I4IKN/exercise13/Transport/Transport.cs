@@ -111,14 +111,13 @@ namespace Transportlaget
 			errorCount = 0;
 			while (sending)
 			{
-				byte[] buffToSend = new byte[size+4];
-				buffToSend[2] = seqNo;
-				buffToSend[3] = (int)TransType.DATA;
+				buffer[2] = seqNo;
+				buffer[3] = (int)TransType.DATA;
 				
-				Array.Copy(buf, 0, buffToSend, 4, size);
-				checksum.calcChecksum (ref buffToSend, (int) (size + TransSize.ACKSIZE));
+				Array.Copy(buf, 0, buffer, 4, size);
+				checksum.calcChecksum (ref buffer, (int) (size + TransSize.ACKSIZE));
 
-				link.Send (buffToSend, (int) (size+TransSize.ACKSIZE));
+				link.Send (buffer, (int) (size+TransSize.ACKSIZE));
 
 				try{
 					sending = !receiveAck();
@@ -126,11 +125,11 @@ namespace Transportlaget
 				}
 				catch(TimeoutException) {
 					errorCount++;
-					if (errorCount >= 5) 
-					{
+					if (errorCount >= 5) {
 						Console.WriteLine ("Connection timed out ...");
 						break;
-					}
+					} else
+						continue;
 				}
 
 			}
@@ -160,7 +159,7 @@ namespace Transportlaget
                     old_seqNo = buffer[2];
 					sendAck (true);
 
-					Array.Copy (buffer, 4, buf, 0, sizeOfData-4);
+					Array.Copy (buffer, 4, buf, 0, sizeOfData-(int)TransSize.ACKSIZE);
                     
 					return (int) (sizeOfData-TransSize.ACKSIZE);
 				}

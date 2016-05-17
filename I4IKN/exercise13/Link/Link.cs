@@ -57,38 +57,61 @@ namespace Linklaget
 	    	// TO DO Your own code
 			//Convert byte array to strings, send each string, terminate with /n
 			//OBS: A 
+			List<byte> bytelist= new List<byte>();
+			bytelist.Add ((byte)'A');
 
-			char[] charsToSend = new char[size+3];
-			int currentIndex = 0;
-
-			for (currentIndex = 0; currentIndex < size; currentIndex++) 
+			for (int i = 0; i < size; i++) 
 			{
-				if (buf [currentIndex] == 'A') {
-					charsToSend [currentIndex] = 'B';
-					currentIndex++;
-					charsToSend [currentIndex] = 'C';
-				} else if (buf [currentIndex] == 'B') {
-					charsToSend [currentIndex] = 'B';
-					currentIndex++;
-					charsToSend [currentIndex] = 'D';
-				} else 
+				if (buf [i] == (byte)'A') 
 				{
-					charsToSend [currentIndex] = (char)buf [currentIndex];
+					bytelist.Add ((byte)'B');
+					bytelist.Add ((byte)'C');
 				}
+				else if (buf [i] == (byte)'B')
+				{
+					bytelist.Add ((byte)'B');
+					bytelist.Add ((byte)'D');
+				}
+				else
+					bytelist.Add (buf [i]);
 			}
 
-			charsToSend[currentIndex] = 'A';
-			currentIndex ++;
-			charsToSend[currentIndex] = '\n';
-			string package = null;
+			bytelist.Add ((byte)'A');
 
-			for (int i = 2; i < charsToSend.Length; i++) 
-			{
-				package += charsToSend [i];
-			}
+			var t = bytelist.ToArray ();
+			serialPort.Write (t, 0, bytelist.Count);
 
-			Console.WriteLine (package);
-		    if (package != null) serialPort.Write (package);
+//			char[] charsToSend = new char[size+3];
+//			int currentIndex = 0;
+//
+//			for (currentIndex = 0; currentIndex < size; currentIndex++) 
+//			{
+//				if (buf [currentIndex] == 'A') {
+//					charsToSend [currentIndex] = 'B';
+//					currentIndex++;
+//					charsToSend [currentIndex] = 'C';
+//				} else if (buf [currentIndex] == 'B') {
+//					charsToSend [currentIndex] = 'B';
+//					currentIndex++;
+//					charsToSend [currentIndex] = 'D';
+//				} else 
+//				{
+//					charsToSend [currentIndex] = (char)buf [currentIndex];
+//				}
+//			}
+//
+//			charsToSend[currentIndex] = 'A';
+//			currentIndex ++;
+//			charsToSend[currentIndex] = '\n';
+//			string package = null;
+//
+//			for (int i = 2; i < charsToSend.Length; i++) 
+//			{
+//				package += charsToSend [i];
+//			}
+//
+//			Console.WriteLine (package);
+//		    if (package != null) serialPort.Write (package);
 		}
 
 		/// <summary>
@@ -103,42 +126,35 @@ namespace Linklaget
 		public int Receive (ref byte[] buf)
 		{
 			Console.WriteLine ("Link.recieve");
-			try
+
+			while (serialPort.ReadByte () != (byte)'A') {
+			}
+
+			int readBytes = 0;
+			byte c;
+			while ((c = (byte)serialPort.ReadByte ()) != (byte)'A') 
 			{
+				buffer [readBytes] = c;
+				readBytes++;
+			}
 
-				while (serialPort.ReadByte () != (byte)'A') {
-				}
-
-
-				int toRead = serialPort.BytesToRead;
-				Console.WriteLine ("Bytes to read: {0}",toRead);
-				byte[] bytes = new byte[toRead];
-				serialPort.Read(bytes, 0, toRead);
-		
-
-				for (int i = 0; i < toRead; i++)
-				{				
-					if (bytes[i] == (byte)'B' && bytes[i+1] == (byte)'C')
-					{
-						buf[i] = (byte) 'A';
-					}
-					else if (bytes[i] == (byte) 'B' && bytes[i + 1] == (byte) 'D')
-					{
-						buf[i] = (byte) 'B';
-					}
-					else
-					{
-						buf [i] = bytes [i];
-					}
-
+			int returnBufSize = 0;
+			for (int i = 0; i < readBytes; i++, returnBufSize++) 
+			{
+				if (buffer [i] == 'B') 
+				{
+					i++;
+					if (buffer [i] == 'C')
+						buf [returnBufSize] = (byte)'A';
+					else if (buffer [i] == 'D')
+						buf [returnBufSize] = (byte)'B';
+				} else 
+				{
+					buf [returnBufSize] = buffer [i];
 				}
 			}
-			catch(TimeoutException) 
-			{
-				Console.WriteLine ("Read timed out - no bytes to read...");
-			}
-						
-			return buf.Length;
+
+			return returnBufSize;
 		}
 	}
 }

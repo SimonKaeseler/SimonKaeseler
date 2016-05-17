@@ -63,8 +63,9 @@ namespace Application
 			{
 				stringToSend += (char)bytesForSize[i];
 			}
-			
-			int fileSize = int.Parse (stringToSend);
+
+
+			long fileSize = long.Parse (stringToSend);
 			
 			if (fileSize == 0) 
 			{
