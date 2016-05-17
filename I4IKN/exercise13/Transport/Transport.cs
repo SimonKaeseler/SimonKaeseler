@@ -148,29 +148,33 @@ namespace Transportlaget
 			Console.WriteLine ("Transport.recieve");
 			while (true) 
 			{
-				//byte[] buffToRecieve = new byte[buf.Length];
-
-				int sizeOfData = link.Receive (ref buf);
-
-				var check = checksum.checkChecksum (buffer, sizeOfData);
-                Console.WriteLine("SeqNo: {0} OldSeqNo: {1}, Checksum {2}",seqNo,old_seqNo,check);
-				if (check && seqNo != old_seqNo) 
+				try
 				{
-                    old_seqNo = buffer[2];
-					sendAck (true);
+					//byte[] buffToRecieve = new byte[buf.Length];
 
-					Array.Copy (buffer, 4, buf, 0, sizeOfData-(int)TransSize.ACKSIZE);
-                    
-					return (int) (sizeOfData-TransSize.ACKSIZE);
+					int sizeOfData = link.Receive (ref buf);
+
+					var check = checksum.checkChecksum (buffer, sizeOfData);
+	                Console.WriteLine("SeqNo: {0} OldSeqNo: {1}, Checksum {2}",seqNo,old_seqNo,check);
+					if (check && seqNo != old_seqNo) 
+					{
+	                    old_seqNo = buffer[2];
+						sendAck (true);
+
+						Array.Copy (buffer, 4, buf, 0, sizeOfData-(int)TransSize.ACKSIZE);
+	                    
+						return (int) (sizeOfData-TransSize.ACKSIZE);
+					}
+
+					sendAck (false);
 				}
-
-				sendAck (false);
+				catch(Exception e) 
+				{
+				}
 			}
+		
 		}
 
-		public bool Ack()
-		{
-			return receiveAck ();
-		}
+
 	}
 }
