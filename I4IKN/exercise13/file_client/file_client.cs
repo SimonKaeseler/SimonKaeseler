@@ -41,6 +41,8 @@ namespace Application
 			}
 
 			receiveFile (LIB.extractFileName(filename), _transport);
+			Console.WriteLine ("Done!");
+			Console.ReadKey ();
 	    }
 
 		/// <summary>
