@@ -20,7 +20,7 @@ namespace Application
 		private file_server ()
 		{
 			// TO DO Your own code
-
+			int size=0;
 
 			while (true) 
 			{
@@ -30,7 +30,7 @@ namespace Application
 					//byte[] fileToSend = new byte[BUFSIZE];
 
 					byte[] fileToSend = new byte[BUFSIZE];
-					int size = _transport.receive(ref fileToSend);
+					while((size = _transport.receive(ref fileToSend)) == 0);
 					string stringToSend = "";
 
 					for (int i = 0; i < size; i++)

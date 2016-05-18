@@ -1,14 +1,3 @@
-/root/SimonKaeseler/I4IKN/exercise13/file_client/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
-/root/SimonKaeseler/I4IKN/exercise13/file_client/bin/Debug/LIB.dll
-/root/SimonKaeseler/I4IKN/exercise13/file_client/bin/Debug/LIB.dll.mdb
-/root/SimonKaeseler/I4IKN/exercise13/file_client/bin/Debug/Transport.dll
-/root/SimonKaeseler/I4IKN/exercise13/file_client/bin/Debug/Transport.dll.mdb
-/root/SimonKaeseler/I4IKN/exercise13/file_client/bin/Debug/Link.dll
-/root/SimonKaeseler/I4IKN/exercise13/file_client/bin/Debug/Link.dll.mdb
-/root/SimonKaeseler/I4IKN/exercise13/file_client/bin/Debug/file_client.exe.mdb
-/root/SimonKaeseler/I4IKN/exercise13/file_client/bin/Debug/file_client.exe
-/root/SimonKaeseler/I4IKN/exercise13/file_client/obj/x86/Debug/file_client.exe
-/root/SimonKaeseler/I4IKN/exercise13/file_client/obj/x86/Debug/file_client.exe.mdb
 /root/I4IKN/SimonKaeseler/I4IKN/exercise13/file_client/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
 /root/I4IKN/SimonKaeseler/I4IKN/exercise13/file_client/bin/Debug/file_client.exe.mdb
 /root/I4IKN/SimonKaeseler/I4IKN/exercise13/file_client/bin/Debug/file_client.exe

@@ -71,9 +71,12 @@ namespace Transportlaget
 			if(!checksum.checkChecksum(buf, (int)TransSize.ACKSIZE) ||
 					buf[(int)TransCHKSUM.SEQNO] != seqNo ||
 					buf[(int)TransCHKSUM.TYPE] != (int)TransType.ACK)
-                Console.WriteLine("buf[(int)TransCHKSUM.SEQNO]: {0} buf[(int)TransCHKSUM.TYPE]: {1}", buf[(int)TransCHKSUM.SEQNO], buf[(int)TransCHKSUM.TYPE]);
+			{
+                Console.WriteLine("buf[(int)TransCHKSUM.SEQNO]: {0} buf[(int)TransCHKSUM.TYPE]: {1}"
+					, buf[(int)TransCHKSUM.SEQNO]
+					, buf[(int)TransCHKSUM.TYPE]);
 				return false;
-			
+			}
 			seqNo = (byte)((buf[(int)TransCHKSUM.SEQNO] + 1) % 2);
 			
 			return true;
@@ -92,7 +95,9 @@ namespace Transportlaget
 					(ackType ? (byte)buffer [(int)TransCHKSUM.SEQNO] : (byte)(buffer [(int)TransCHKSUM.SEQNO] + 1) % 2);
 			ackBuf [(int)TransCHKSUM.TYPE] = (byte)(int)TransType.ACK;
 			checksum.calcChecksum (ref ackBuf, (int)TransSize.ACKSIZE);
-            Console.WriteLine("ackBuf [(int)TransCHKSUM.SEQNO]: {0} ackBuf [(int)TransCHKSUM.TYPE]: {1} ", ackBuf[(int)TransCHKSUM.SEQNO], ackBuf[(int)TransCHKSUM.TYPE]);
+            Console.WriteLine("ackBuf [(int)TransCHKSUM.SEQNO]: {0} ackBuf [(int)TransCHKSUM.TYPE]: {1} "
+				, ackBuf[(int)TransCHKSUM.SEQNO]
+				, ackBuf[(int)TransCHKSUM.TYPE]);
 			link.Send(ackBuf, (int)TransSize.ACKSIZE);
 		}
 
@@ -117,6 +122,7 @@ namespace Transportlaget
 				Array.Copy(buf, 0, buffer, 4, size);
 				checksum.calcChecksum (ref buffer, (int) (size + TransSize.ACKSIZE));
 
+				Console.WriteLine ("Sending size: {0}", (int)(size + TransSize.ACKSIZE));
 				link.Send (buffer, (int) (size+TransSize.ACKSIZE));
 
 				try{
@@ -155,7 +161,7 @@ namespace Transportlaget
 					int sizeOfData = link.Receive (ref buf);
 
 					var check = checksum.checkChecksum (buffer, sizeOfData);
-	                Console.WriteLine("SeqNo: {0} OldSeqNo: {1}, Checksum {2}",seqNo,old_seqNo,check);
+					Console.WriteLine("SeqNo: {0} OldSeqNo: {1}, Checksum {2} size{3}",seqNo,old_seqNo,check,sizeOfData);
 					if (check && seqNo != old_seqNo) 
 					{
 	                    old_seqNo = buffer[2];
