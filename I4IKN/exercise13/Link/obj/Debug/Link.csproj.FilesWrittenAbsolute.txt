@@ -1,5 +1,5 @@
-/root/I4IKN/SimonKaeseler/I4IKN/exercise13/Link/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
-/root/I4IKN/SimonKaeseler/I4IKN/exercise13/Link/bin/Debug/Link.dll.mdb
-/root/I4IKN/SimonKaeseler/I4IKN/exercise13/Link/bin/Debug/Link.dll
-/root/I4IKN/SimonKaeseler/I4IKN/exercise13/Link/obj/Debug/Link.dll
-/root/I4IKN/SimonKaeseler/I4IKN/exercise13/Link/obj/Debug/Link.dll.mdb
+/root/SimonKaeseler/I4IKN/exercise13/Link/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/root/SimonKaeseler/I4IKN/exercise13/Link/bin/Debug/Link.dll.mdb
+/root/SimonKaeseler/I4IKN/exercise13/Link/bin/Debug/Link.dll
+/root/SimonKaeseler/I4IKN/exercise13/Link/obj/Debug/Link.dll
+/root/SimonKaeseler/I4IKN/exercise13/Link/obj/Debug/Link.dll.mdb
