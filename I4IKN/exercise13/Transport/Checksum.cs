@@ -41,7 +41,7 @@ namespace Transportlaget
 			buf[(int)TransCHKSUM.CHKSUMHIGH] = (byte)((sum >> 8) & 255);
 			buf[(int)TransCHKSUM.CHKSUMLOW] = (byte)(sum & 255);
 
-			Console.WriteLine ("buf[(int)TransCHKSUM.CHKSUMHIGH] = {0} & buf[(int)TransCHKSUM.CHKSUMLOW] {1}", buf [(int)TransCHKSUM.CHKSUMHIGH], buf [(int)TransCHKSUM.CHKSUMLOW]);
+			Console.WriteLine ("CHKSUMHIGH = {0} & CHKSUMLOW {1}", buf [(int)TransCHKSUM.CHKSUMHIGH], buf [(int)TransCHKSUM.CHKSUMLOW]);
 		}
 	}
 }

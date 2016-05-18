@@ -114,33 +114,33 @@ namespace Transportlaget
 		{
 			bool sending = true;
 			errorCount = 0;
-			while (sending)
+			while (sending) 
 			{
-				buffer[2] = seqNo;
-				buffer[3] = (int)TransType.DATA;
-				
-				Array.Copy(buf, 0, buffer, 4, size);
-				checksum.calcChecksum (ref buffer, (int) (size + TransSize.ACKSIZE));
 
-				Console.WriteLine ("Sending size: {0}", (int)(size + TransSize.ACKSIZE));
-				link.Send (buffer, (int) (size+TransSize.ACKSIZE));
+				buffer [2] = seqNo;
+				buffer [3] = (int)TransType.DATA;
 
-				try{
+				Array.Copy (buf, 0, buffer, (int)TransSize.ACKSIZE, size);
+
+				checksum.calcChecksum (ref buffer, size + (int)TransSize.ACKSIZE);
+
+				link.Send (buffer, size + (int)TransSize.ACKSIZE);
+
+				try
+				{
 					sending = !receiveAck();
 
 				}
-				catch(TimeoutException) {
-					errorCount++;
+				catch(Exception e) 
+				{
 					if (errorCount >= 5) {
-						Console.WriteLine ("Connection timed out ...");
-						break;
+						Console.WriteLine ("Timed out on 5th try...");
+						throw new TimeoutException ();
+
 					} else
 						continue;
 				}
-
 			}
-
-
 		}
 
 		/// <summary>
@@ -151,31 +151,38 @@ namespace Transportlaget
 		/// </param>
 		public int receive (ref byte[] buf)
 		{
-			Console.WriteLine ("Transport.recieve");
 			while (true) 
 			{
 				try
 				{
-					//byte[] buffToRecieve = new byte[buf.Length];
+					var receivedDataSize = link.Receive (ref buffer);
 
-					int sizeOfData = link.Receive (ref buf);
-
-					var check = checksum.checkChecksum (buffer, sizeOfData);
-					Console.WriteLine("SeqNo: {0} OldSeqNo: {1}, Checksum {2} size {3}",seqNo,old_seqNo,check,sizeOfData);
-					if (check && seqNo != old_seqNo) 
+					//Check if seq-number is correct
+					if(buffer[2] != old_seqNo)
 					{
-	                    old_seqNo = buffer[2];
-						sendAck (true);
-
-						Array.Copy (buffer, 4, buf, 0, sizeOfData-(int)TransSize.ACKSIZE);
-	                    
-						return (int) (sizeOfData-TransSize.ACKSIZE);
+						//Check if checksum is correct
+						if(checksum.checkChecksum(buffer, receivedDataSize))
+						{
+							old_seqNo = buffer[2];
+							sendAck(true);
+							Array.Copy (buffer, 4, buf, 0, receivedDataSize-(int)TransSize.ACKSIZE); //Copy(source, offset, destination, offset, lengthToCopy)
+							return receivedDataSize-(int)TransSize.ACKSIZE;
+						}
+						else
+						{
+							sendAck(false);
+							Console.WriteLine("Recieved damaged package.. bad checksum");
+						}
 					}
-
-					sendAck (false);
+					else
+					{
+						sendAck(false);
+						Console.WriteLine("Recieved wrong package.. bad sequenceNumber");
+					}
 				}
-				catch(Exception e) 
+				catch (Exception e)
 				{
+					//Console.WriteLine (e.ToString ());
 				}
 			}
 		

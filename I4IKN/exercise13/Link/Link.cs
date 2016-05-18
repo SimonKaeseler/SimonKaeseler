@@ -54,64 +54,30 @@ namespace Linklaget
 		/// </param>
 		public void Send (byte[] buf, int size)
 		{
-	    	// TO DO Your own code
-			//Convert byte array to strings, send each string, terminate with /n
-			//OBS: A 
-			List<byte> bytelist= new List<byte>();
-			bytelist.Add ((byte)'A');
+			List<byte> package = new List<byte> ();
+			package.Add ((byte)'A');
 
 			for (int i = 0; i < size; i++) 
 			{
-				if (buf [i] == (byte)'A') 
-				{
-					bytelist.Add ((byte)'B');
-					bytelist.Add ((byte)'C');
-				}
-				else if (buf [i] == (byte)'B')
-				{
-					bytelist.Add ((byte)'B');
-					bytelist.Add ((byte)'D');
-				}
-				else
-					bytelist.Add (buf [i]);
+				if (buf [i] == (byte)'A') {
+					package.Add ((byte)'B');
+					package.Add ((byte)'C');
+				} else if (buf [i] == (byte)'B') {
+					package.Add ((byte)'C');
+					package.Add ((byte)'D');
+				} else
+					package.Add (buf [i]);
 			}
 
-			bytelist.Add ((byte)'A');
-
-			var t = bytelist.ToArray ();
-			serialPort.Write (t, 0, bytelist.Count);
-
-//			char[] charsToSend = new char[size+3];
-//			int currentIndex = 0;
-//
-//			for (currentIndex = 0; currentIndex < size; currentIndex++) 
-//			{
-//				if (buf [currentIndex] == 'A') {
-//					charsToSend [currentIndex] = 'B';
-//					currentIndex++;
-//					charsToSend [currentIndex] = 'C';
-//				} else if (buf [currentIndex] == 'B') {
-//					charsToSend [currentIndex] = 'B';
-//					currentIndex++;
-//					charsToSend [currentIndex] = 'D';
-//				} else 
-//				{
-//					charsToSend [currentIndex] = (char)buf [currentIndex];
-//				}
-//			}
-//
-//			charsToSend[currentIndex] = 'A';
-//			currentIndex ++;
-//			charsToSend[currentIndex] = '\n';
-//			string package = null;
-//
-//			for (int i = 2; i < charsToSend.Length; i++) 
-//			{
-//				package += charsToSend [i];
-//			}
-//
-//			Console.WriteLine (package);
-//		    if (package != null) serialPort.Write (package);
+			//ESC char
+			package.Add ((byte)'A');
+			string toPrint = "";
+			foreach (byte b in package) 
+			{
+				toPrint += (char)b;
+			}
+			Console.WriteLine("Sending package {0} with checksum {1};{2}",toPrint,buf[0],buf[1]);
+			serialPort.Write (package.ToArray (), 0, package.Count);
 		}
 
 		/// <summary>
