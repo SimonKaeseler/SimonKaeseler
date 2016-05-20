@@ -27,12 +27,12 @@ namespace Application
 			{
 				Console.WriteLine ("Server not responding...");
 			}
-			string fP = "";
-			for (int i = 0; i < filePath.Length; i++) 
-			{
-				fP += filePath [i];
-			}
-			receiveFile (fP, transport);
+//			string fP = "";
+//			for (int i = 0; i < filePath.Length; i++) 
+//			{
+//				fP += filePath [i];
+//			}
+			receiveFile (args[0], transport);
 	    }
 
 
