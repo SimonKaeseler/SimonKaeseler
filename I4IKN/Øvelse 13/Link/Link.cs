@@ -9,6 +9,7 @@ namespace Linklaget
 		const byte DELIMITER = (byte)'A';
 		private byte[] buffer;
 		SerialPort serialPort;
+		int b = 0;
 
 		public Link (int BUFSIZE)
 		{
@@ -61,13 +62,14 @@ namespace Linklaget
 			}
 
 			int index = 0;
-			int b = 0;
+
 			while (b != -1) 
 			{	b = serialPort.ReadByte ();
 				Console.Write((char)b);
 				buffer [index] = (byte)b;
 				index++;
 			}
+			b = 0;
 			Console.WriteLine();
 			int toAdd = 0;
 			int i = 0;
