@@ -51,7 +51,7 @@ namespace Linklaget
 			buffer[currentIndex] = (byte)'A';
 			currentIndex ++;
 
-			//Console.WriteLine ("Sending {0} of size {1}",package,charsToSend.Length);
+			Console.WriteLine ("Sending size {0}",currentIndex);
 			serialPort.Write (buffer,0, currentIndex);
 		}
 
@@ -64,10 +64,11 @@ namespace Linklaget
 			int b = 0;
 			while (b != -1) 
 			{	b = serialPort.ReadByte ();
+				Console.Write((char)b);
 				buffer [index] = (byte)b;
 				index++;
 			}
-
+			Console.WriteLine();
 			int toAdd = 0;
 			int i = 0;
 			for (i= 0; i < index; i++)
