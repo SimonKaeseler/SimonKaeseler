@@ -82,7 +82,9 @@ namespace Transportlaget
 								return sizeOfData-(int)TransSize.ACKSIZE;
 						}else sendAck(false);
 					}else sendAck(false);
-				} catch(Exception e) {
+				} catch(Exception e) 
+				{
+					Console.WriteLine ("Time out...");
 				}
 			}
 		}
