@@ -32,7 +32,7 @@ namespace Application
 			{
 				fP += filePath [i];
 			}
-			receiveFile (fp, transport);
+			receiveFile (fP, transport);
 	    }
 
 
