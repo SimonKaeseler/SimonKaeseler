@@ -70,14 +70,18 @@ namespace Linklaget
 				readIndex++;
 			}
 			int r = 0;
-			for (int i = 0; i < r; i++,r++) 
+			for (int i = 0; i < readIndex; i++,r++) 
 			{
-				if (buffer [i] == 'B' && buffer [i + 1] == 'C') {
-					buf [r] = (byte)'A';
-				} else if (buffer [i] == 'B' && buffer [i + 1] == 'D') {
-					buf [r] = (byte)'B';
-				} else
-					buf [r] = buffer [i];
+				if(buffer[i] == 'B')
+					{
+						i++;
+						if(buffer[i] == 'C')
+							buf[r] = (byte)'A';
+						else if(buffer[i] == 'D')
+							buf[r]= (byte)'B';
+						else
+							buf[r] = buffer[i];
+					}
 			}
 			return r;
 		}

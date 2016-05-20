@@ -80,8 +80,16 @@ namespace Transportlaget
 								sendAck(true);
 								Array.Copy(buffer,(int)TransSize.ACKSIZE,buf,0,sizeOfData-(int)TransSize.ACKSIZE);
 								return sizeOfData-(int)TransSize.ACKSIZE;
-						}else sendAck(false);
-					}else sendAck(false);
+						}else 
+						{
+							sendAck(false);
+							Console.WriteLine("!checksum!");
+						}
+					}else 
+					{
+						sendAck(false);
+						Console.WriteLine("!seqNo!");
+					}
 				} catch(Exception e) 
 				{
 					Console.WriteLine ("Time out...");
