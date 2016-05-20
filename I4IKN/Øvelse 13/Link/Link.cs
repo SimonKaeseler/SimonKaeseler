@@ -61,9 +61,9 @@ namespace Linklaget
 			}
 
 			int index = 0;
-			var b = serialPort.ReadByte ();
+			int b = 0;
 			while (b != -1) 
-			{
+			{	b = serialPort.ReadByte ();
 				buffer [index] = (byte)b;
 				index++;
 			}
