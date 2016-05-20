@@ -1,0 +1,6 @@
+/root/Desktop/Øvelse 13/LIB/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/root/Desktop/Øvelse 13/LIB/bin/Debug/LIB.dll.mdb
+/root/Desktop/Øvelse 13/LIB/bin/Debug/LIB.dll
+/root/Desktop/Øvelse 13/LIB/obj/Debug/LIB.dll
+/root/Desktop/Øvelse 13/LIB/obj/Debug/LIB.dll.mdb
+/root/Desktop/Øvelse 13/LIB/bin/Debug/System.dll

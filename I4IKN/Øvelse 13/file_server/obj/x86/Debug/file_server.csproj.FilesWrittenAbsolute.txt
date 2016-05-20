@@ -1,0 +1,11 @@
+/root/Desktop/Øvelse 13/file_server/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/root/Desktop/Øvelse 13/file_server/bin/Debug/file_server.exe.mdb
+/root/Desktop/Øvelse 13/file_server/bin/Debug/file_server.exe
+/root/Desktop/Øvelse 13/file_server/obj/x86/Debug/file_server.exe
+/root/Desktop/Øvelse 13/file_server/obj/x86/Debug/file_server.exe.mdb
+/root/Desktop/Øvelse 13/file_server/bin/Debug/Transport.dll
+/root/Desktop/Øvelse 13/file_server/bin/Debug/Transport.dll.mdb
+/root/Desktop/Øvelse 13/file_server/bin/Debug/LIB.dll
+/root/Desktop/Øvelse 13/file_server/bin/Debug/LIB.dll.mdb
+/root/Desktop/Øvelse 13/file_server/bin/Debug/Link.dll
+/root/Desktop/Øvelse 13/file_server/bin/Debug/Link.dll.mdb
