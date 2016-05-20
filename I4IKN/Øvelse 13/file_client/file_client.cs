@@ -53,7 +53,7 @@ namespace Application
 			while (i < fileLength) 
 			{
 				int size = transport.receive(ref b);
-				Console.WriteLine (size);
+				//Console.WriteLine (size);
 				f.Write (b, 0, size);
 				i += size;
 			}
