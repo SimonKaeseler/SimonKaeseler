@@ -4,3 +4,9 @@
 /root/I4IKN/SimonKaeseler/I4IKN/Øvelse 13/LIB/obj/Debug/LIB.dll
 /root/I4IKN/SimonKaeseler/I4IKN/Øvelse 13/LIB/obj/Debug/LIB.dll.mdb
 /root/I4IKN/SimonKaeseler/I4IKN/Øvelse 13/LIB/bin/Debug/System.dll
+/root/SimonKaeseler/I4IKN/Øvelse 13/LIB/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/root/SimonKaeseler/I4IKN/Øvelse 13/LIB/bin/Debug/LIB.dll.mdb
+/root/SimonKaeseler/I4IKN/Øvelse 13/LIB/bin/Debug/LIB.dll
+/root/SimonKaeseler/I4IKN/Øvelse 13/LIB/obj/Debug/LIB.dll
+/root/SimonKaeseler/I4IKN/Øvelse 13/LIB/obj/Debug/LIB.dll.mdb
+/root/SimonKaeseler/I4IKN/Øvelse 13/LIB/bin/Debug/System.dll
