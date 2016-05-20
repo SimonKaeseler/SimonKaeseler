@@ -32,7 +32,7 @@ namespace Application
 			{
 				fP += filePath [i];
 			}
-			receiveFile (filePath.ToString(), transport);
+			receiveFile (fp, transport);
 	    }
 
 
