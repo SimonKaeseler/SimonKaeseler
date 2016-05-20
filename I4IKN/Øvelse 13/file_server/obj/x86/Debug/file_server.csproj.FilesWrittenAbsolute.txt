@@ -9,3 +9,14 @@
 /root/SimonKaeseler/I4IKN/Øvelse 13/file_server/bin/Debug/LIB.dll.mdb
 /root/SimonKaeseler/I4IKN/Øvelse 13/file_server/bin/Debug/Link.dll
 /root/SimonKaeseler/I4IKN/Øvelse 13/file_server/bin/Debug/Link.dll.mdb
+/root/I4IKN/SimonKaeseler/I4IKN/Øvelse 13/file_server/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/root/I4IKN/SimonKaeseler/I4IKN/Øvelse 13/file_server/bin/Debug/file_server.exe.mdb
+/root/I4IKN/SimonKaeseler/I4IKN/Øvelse 13/file_server/bin/Debug/file_server.exe
+/root/I4IKN/SimonKaeseler/I4IKN/Øvelse 13/file_server/obj/x86/Debug/file_server.exe
+/root/I4IKN/SimonKaeseler/I4IKN/Øvelse 13/file_server/obj/x86/Debug/file_server.exe.mdb
+/root/I4IKN/SimonKaeseler/I4IKN/Øvelse 13/file_server/bin/Debug/Transport.dll
+/root/I4IKN/SimonKaeseler/I4IKN/Øvelse 13/file_server/bin/Debug/Transport.dll.mdb
+/root/I4IKN/SimonKaeseler/I4IKN/Øvelse 13/file_server/bin/Debug/LIB.dll
+/root/I4IKN/SimonKaeseler/I4IKN/Øvelse 13/file_server/bin/Debug/LIB.dll.mdb
+/root/I4IKN/SimonKaeseler/I4IKN/Øvelse 13/file_server/bin/Debug/Link.dll
+/root/I4IKN/SimonKaeseler/I4IKN/Øvelse 13/file_server/bin/Debug/Link.dll.mdb
