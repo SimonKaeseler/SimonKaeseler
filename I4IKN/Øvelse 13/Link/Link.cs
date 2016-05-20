@@ -9,7 +9,6 @@ namespace Linklaget
 		const byte DELIMITER = (byte)'A';
 		private byte[] buffer;
 		SerialPort serialPort;
-		int b = 0;
 
 		public Link (int BUFSIZE)
 		{
@@ -61,38 +60,24 @@ namespace Linklaget
 			while (serialPort.ReadByte () != (byte)'A') {
 			}
 
-			int index = 0;
-
-			while (b != -1) 
-			{	b = serialPort.ReadByte ();
-				Console.Write((char)b);
-				buffer [index] = (byte)b;
-				index++;
+			int readIndex = 0;
+			byte b;
+			while ((b = (byte)serialPort.ReadByte ()) != (byte)'A') 
+			{
+				buffer [readIndex] = b;
+				readIndex++;
 			}
-			b = 0;
-			Console.WriteLine();
-			int toAdd = 0;
-			int i = 0;
-			for (i= 0; i < index; i++)
-			{				
-				if(buffer[i] == (byte)'B')
-				{
-					if(buffer[i+1] == (byte)'C')
-					{
-						toAdd++;
-						buf[i] = (byte)'A';
-					}
-					else if (buffer[i+1] == (byte)'D')
-					{
-						toAdd ++;
-						buf[i] = (byte)'B';
-					}
-					else
-						buf[i] = buffer[i];														
-				}
+			int r = 0;
+			for (int i = 0; i < r; i++,r++) 
+			{
+				if (buffer [i] == 'B' && buffer [i + 1] == 'C') {
+					buf [r] = (byte)'A';
+				} else if (buffer [i] == 'B' && buffer [i + 1] == 'D') {
+					buf [r] = (byte)'B';
+				} else
+					buf [r] = buffer [i];
 			}
-			
-			return i + toAdd;
+			return r;
 		}
 	}
 }

@@ -52,7 +52,7 @@ namespace Transportlaget
 				catch(Exception e) 
 				{
 					errorCount++;
-					if (errorCount >= 500) 
+					if (errorCount >= 5) 
 					{
 						break;
 					}else
