@@ -44,7 +44,7 @@ namespace Linklaget
 					buffer [currentIndex] = (byte)'D';
 				} else 
 				{
-					buffer [currentIndex] = buf [currentIndex];
+					buffer [currentIndex] = buf [i];
 				}
 				currentIndex++;
 			}
@@ -79,9 +79,10 @@ namespace Linklaget
 							buf[r] = (byte)'A';
 						else if(buffer[i] == 'D')
 							buf[r]= (byte)'B';
-						else
-							buf[r] = buffer[i];
+						
 					}
+				else
+					buf[r] = buffer[i];
 			}
 			return r;
 		}
