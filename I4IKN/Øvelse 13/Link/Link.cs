@@ -27,7 +27,6 @@ namespace Linklaget
 
 		public void send (byte[] buf, int size)
 		{
-			Console.WriteLine ("Link.send " + size);
 			int currentIndex = 0;
 
 			buffer [currentIndex] = (byte)'A';
@@ -52,13 +51,11 @@ namespace Linklaget
 			buffer[currentIndex] = (byte)'A';
 			currentIndex ++;
 
-			Console.WriteLine ("Sending size {0}",currentIndex);
 			serialPort.Write (buffer,0, currentIndex);
 		}
 
 		public int receive (ref byte[] buf)
 		{
-			Console.WriteLine("Link.recieve");
 			while (serialPort.ReadByte () != (byte)'A') {
 			}
 

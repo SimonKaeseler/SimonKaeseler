@@ -32,7 +32,7 @@ namespace Transportlaget
 
 		public void send(byte[] buf, int size)
 		{
-			Console.WriteLine ("Transport.send;"+ size);
+
 			bool sending = true;
 			errorCount = 0;
 			while (sending) 
@@ -65,7 +65,6 @@ namespace Transportlaget
 
 		public int receive (ref byte[] buf)
 		{
-			Console.WriteLine ("Transport.recieve");
 			while (true) 
 			{
 				try
